@@ -26,8 +26,4 @@ class KeyTest < Minitest::Test
     assert_equal 5, @user_key.number.length
     assert_equal 5, @random_key.number.length
   end
-
-  def test_it_can_be_split
-    assert_equal [02, 27, 71, 15], @user_key.split_number
-  end
 end
