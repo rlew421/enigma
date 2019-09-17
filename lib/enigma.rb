@@ -6,6 +6,5 @@ class Enigma
   def initialize
     @date = Time.new.strftime("%d%m%y")
     @alphabet = ("a".."z").to_a << " "
-    @key = key
   end
 end
