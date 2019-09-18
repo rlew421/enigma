@@ -1,5 +1,3 @@
-require './lib/enigma'
-
 class Key
   attr_reader :number
 
