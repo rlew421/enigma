@@ -18,15 +18,25 @@ class EncryptorTest < Minitest::Test
     assert_equal expected, @encryptor.split_message
   end
 
-  def test_it_can_rotate_characters
-
+  def test_it_can_encrypt_letters
+    letter = "l"
+    number = 73
+    assert_equal "d", @encryptor.encrypt_letters(letter, number)
   end
 
-  def test_it_encrypts_message
-    assert_equal "keder ohulw", @encryptor.encrypt_message("hello world!", "02715", "040895")
+  def test_it_can_rotate_characters
+    numbers = [3, 27, 73, 20]
+    letters = ['h', 'e', 'l', 'l']
+    expected = ['k', 'e', 'd', 'e']
+    assert_equal expected, @encryptor.rotate_characters(letters, numbers)
   end
 
   def test_it_only_shifts_letters
+    skip
     assert_equal
+  end
+
+  def test_it_encrypts_message
+    assert_equal "keder ohulw!", @encryptor.encrypt_message("hello world!", "02715", "040895")
   end
 end
