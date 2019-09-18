@@ -2,6 +2,8 @@ require "minitest/autorun"
 require "minitest/pride"
 require "./lib/enigma"
 require 'date'
+require 'simplecov'
+SimpleCov.start
 
 class EnigmaTest < Minitest::Test
 
