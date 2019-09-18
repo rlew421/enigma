@@ -1,7 +1,4 @@
-require "minitest/autorun"
-require "minitest/pride"
-require "./lib/enigma"
-require "./lib/key"
+require "./test/test_helper"
 
 class KeyTest < Minitest::Test
   def setup
@@ -18,8 +15,11 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_can_be_generated_randomly
-    expected = /\d{5}/
-    assert_equal expected, @random_key.number
+    assert_equal 5, @random_key.number.length
+  end
+
+  def test_it_can_generate_random_number
+    assert_instance_of Integer, @random_key.generate_number
   end
 
   def test_it_is_five_digits

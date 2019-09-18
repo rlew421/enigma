@@ -1,8 +1,4 @@
-require "minitest/autorun"
-require "minitest/pride"
-require "./lib/enigma"
-require "./lib/key"
-require "./lib/offset"
+require "./test/test_helper"
 
 class OffsetTest < Minitest::Test
   def setup
