@@ -1,4 +1,7 @@
+require './lib/splittable'
+
 class Decryptor
+  include Splittable
   attr_reader :shift
 
   def initialize(key, offset)
@@ -22,12 +25,28 @@ class Decryptor
     end
   end
 
-  # def encrypt_message(message, key, offset)
-  #   keys = @shift.shift_keys
-  #   offsets = @shift.shift_offset
-  #   shifted_message = split_message.map do |letter_group|
-  #     rotate_characters(letter_group, calculate_total_shift).join
-  #   end
-  #   shifted_message.join
-  # end
+  def decrypt_letters(character, number)
+    if @alphabet.include?(character)
+      index = @alphabet.find_index(character)
+      rotated_character = @alphabet.rotate(number)
+      rotated_character[index]
+    else
+      character
+    end
+  end
+
+  def backward_rotate_characters(letters, numbers)
+    letters.map.with_index do |letter, index|
+      decrypt_letters(letter, numbers[index])
+    end
+  end
+
+  def decrypt_message(shifted_message, key, offset)
+    key = @shift.shift_keys
+    offset = @shift.shift_offset
+    backward_shifted_message = split_message(shifted_message).map do |letter_group|
+      backward_rotate_characters(letter_group, calculate_backward_shift).join
+    end
+    backward_shifted_message.join
+  end
 end
