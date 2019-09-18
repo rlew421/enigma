@@ -18,7 +18,20 @@ class DecryptorTest < Minitest::Test
     assert_equal [-3, -27, -73, -20], @decryptor.calculate_backward_shift
   end
 
-  # def test_it_encrypts_message
-  #   assert_equal "keder ohulw!", @encryptor.encrypt_message("hello world!", "02715", "040895")
-  # end
+  def test_it_decrypts_letters
+    letter = "d"
+    number = 73
+    assert_equal "w", @decryptor.decrypt_letters(letter, number)
+  end
+
+  def test_it_backward_rotates_characters
+    letters = ['k', 'e', 'd', 'e']
+    expected = ['h', 'e', 'l', 'l']
+    numbers = [-3, -27, -73, -20]
+    assert_equal expected, @decryptor.backward_rotate_characters(letters, numbers)
+  end
+
+  def test_it_decrypts_message
+    assert_equal "hello world!", @decryptor.decrypt_message("keder ohulw!", "02715", "040895")
+  end
 end

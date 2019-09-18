@@ -9,6 +9,15 @@ class EncryptorTest < Minitest::Test
     assert_instance_of Encryptor, @encryptor
   end
 
+  def test_attributes
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+    "w", "x", "y", "z", " "]
+    assert_equal "hello world!", @encryptor.message
+    assert_equal expected, @encryptor.alphabet
+    assert_instance_of Shift, @encryptor.shift
+  end
+
   def test_it_calculates_total_shift
     assert_equal [3, 27, 73, 20], @encryptor.calculate_total_shift
   end
