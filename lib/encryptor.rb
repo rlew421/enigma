@@ -13,4 +13,18 @@ class Encryptor
       combo.sum
     end
   end
+
+  def split_message
+    message = @message
+    message.split(//).each_slice(4).to_a
+  end
+
+  # def encrypt_message(message, key, offset)
+  #   keys = @shift.shift_keys
+  #   offsets = @shift.shift_offset
+  #   require 'pry'; binding.pry
+  #   split_message.map do |group|
+  #
+  #   end
+  # end
 end
