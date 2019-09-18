@@ -32,8 +32,9 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_only_shifts_letters
-    skip
-    assert_equal
+    letter = "!"
+    number = 3
+    assert_equal "!", @encryptor.encrypt_letters(letter, number)
   end
 
   def test_it_encrypts_message

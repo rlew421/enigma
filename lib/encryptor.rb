@@ -39,8 +39,9 @@ class Encryptor
   def encrypt_message(message, key, offset)
     keys = @shift.shift_keys
     offsets = @shift.shift_offset
-    split_message.map do |letter_group|
+    shifted_message = split_message.map do |letter_group|
       rotate_characters(letter_group, calculate_total_shift).join
     end
+    shifted_message.join
   end
 end
