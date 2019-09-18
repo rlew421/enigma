@@ -8,6 +8,6 @@ class Key
   end
 
   def generate_number
-    rand(0..99999).to_s.rjust(5,'0')
+    rand(0..99999)
   end
 end
